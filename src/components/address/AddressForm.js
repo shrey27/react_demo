@@ -20,16 +20,23 @@ export default function AddressForm({
     }
   );
   const changehandler = (e) => {
+    e.preventDefault();
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-  const submitHandler = () => {
+  const submitHandler = (e) => {
+    e.preventDefault();
     setAddressFn(initialState?.id, form);
   };
   return (
     <div>
       <div class='card shdw'>
         <h1 class='btn--success md sb cen xs-s'>NEW ADDRESS</h1>
-        <form class='sm-s' autocomplete='off' onSubmit={submitHandler}>
+        <form
+          class='sm-s'
+          action=''
+          enctype='multipart/form-data'
+          onSubmit={submitHandler}
+        >
           <div class='fields'>
             <label for='email--field' class='label'>
               Email:

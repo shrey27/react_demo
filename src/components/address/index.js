@@ -14,21 +14,21 @@ export default function Address() {
     setLoading(true);
     try {
       await axios.delete(MOCK_API + ADDRESS + `/${id}`);
-      const resp = await axios.get(MOCK_API + ADDRESS);
-      setAddArr(resp.data);
+      setAddArr(addArr.filter((elem) => elem.id !== id));
       setLoading(false);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const addNewAddress = async (body) => {
+  const addNewAddress = async (id = '', body) => {
+    console.log(body);
     setLoading(true);
     try {
-      await axios.post(MOCK_API + ADDRESS, body);
-      const resp = await axios.get(MOCK_API + ADDRESS);
-      setAddArr(resp.data);
+      const resp = await axios.post(MOCK_API + ADDRESS, body);
+      setAddArr([...addArr, resp.data]);
       setLoading(false);
+      setShowForm(false);
     } catch (err) {
       console.log(err);
     }
@@ -37,9 +37,15 @@ export default function Address() {
   const updateAddress = async (id, body) => {
     setLoading(true);
     try {
-      await axios.put(MOCK_API + ADDRESS + `/${id}`, body);
-      const resp = await axios.get(MOCK_API + ADDRESS);
-      setAddArr(resp.data);
+      const resp = await axios.put(MOCK_API + ADDRESS + `/${id}`, body);
+      // const resp = await axios.get(MOCK_API + ADDRESS);
+      // setAddArr(resp.data);
+      const arr = addArr.reduce(
+        (prev, curr) =>
+          curr.id !== id ? [...prev, curr] : [...prev, resp.data],
+        []
+      );
+      setAddArr(arr);
       setLoading(false);
     } catch (err) {
       console.log(err);
