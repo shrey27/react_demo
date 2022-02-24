@@ -38,8 +38,6 @@ export default function Address() {
     setLoading(true);
     try {
       const resp = await axios.put(MOCK_API + ADDRESS + `/${id}`, body);
-      // const resp = await axios.get(MOCK_API + ADDRESS);
-      // setAddArr(resp.data);
       const arr = addArr.reduce(
         (prev, curr) =>
           curr.id !== id ? [...prev, curr] : [...prev, resp.data],
