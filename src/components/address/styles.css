@@ -1,0 +1,23 @@
+@import 'https://apolloui-neog.netlify.app/utility/common.css';
+
+.addressContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.address {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.loader {
+  display: block;
+  text-align: center;
+  margin: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgb(107, 27, 27);
+}

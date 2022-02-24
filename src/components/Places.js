@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { MOCK_API, PLACES } from './constants';
 
-const links = {
-  GET_PLACES: 'https://621661ea7428a1d2a36611c7.mockapi.io/api/profile/places',
-  POST_PLACE: 'https://621661ea7428a1d2a36611c7.mockapi.io/api/profile/places'
-};
 export default function Places() {
   const [places, setPlaces] = useState([]);
   const [place, setPlace] = useState('');
 
   const postData = async () => {
     try {
-      await axios.post(links.POST_PLACE, { name: place });
-      const resp = await axios.get(links.GET_PLACES);
+      await axios.post(MOCK_API+PLACES, { name: place });
+      const resp = await axios.get(MOCK_API+PLACES);
       setPlaces(resp.data);
       setPlace('');
     } catch (err) {
@@ -22,7 +19,7 @@ export default function Places() {
 
   useEffect(() => {
     (async function () {
-      const resp = await axios.get(links.GET_PLACES);
+      const resp = await axios.get(MOCK_API+PLACES);
       setPlaces(resp.data);
     })();
   }, []);
