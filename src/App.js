@@ -1,14 +1,13 @@
 import './App.css';
 // import Places from './components/Places';
 //import Address from './components/address/';
-// import Carousel from './components/carousel';
-
+import Effect from './components/issues/Effect';
 export default function App() {
   return (
     <div className='App'>
       {/* <Places /> */}
       {/* <Address /> */}
-      {/* <Carousel /> */}
+      <Effect />
     </div>
   );
 }
