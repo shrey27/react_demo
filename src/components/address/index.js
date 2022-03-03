@@ -22,7 +22,6 @@ export default function Address() {
   };
 
   const addNewAddress = async (id = '', body) => {
-    console.log(body);
     setLoading(true);
     try {
       const resp = await axios.post(MOCK_API + ADDRESS, body);
